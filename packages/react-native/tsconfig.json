@@ -17,6 +17,6 @@
     "strict": true,
     "jsx": "react-jsx",
   },
-  "include": ["src/**/*", "*.ts", "test"],
+  "include": ["src/**/*", "*.ts"],
   "exclude": ["node_modules"],
 }

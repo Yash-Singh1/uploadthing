@@ -1,3 +1,5 @@
+// Builders for hooks and helpers that are used in React SDKs
+
 import { useRef, useState } from "react";
 
 import type { EndpointMetadata } from "@uploadthing/shared";
@@ -144,11 +146,10 @@ export const generateReactHelpersBuilder =
           "url" | "package"
         >,
       ) =>
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         DANGEROUS__uploadFiles<TRouter, TEndpoint>(endpoint, {
           ...opts,
           url,
           package: pkgName,
-        } as any),
+        }),
     } as const;
   };
