@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { useDropzone } from "@uploadthing/dropzone/react";
+import type { UploadthingComponentProps } from "@uploadthing/react-shared/types";
 import {
   allowedContentTextLabelGenerator,
   classNames,
@@ -15,7 +16,6 @@ import {
 import type { ContentField, StyleField } from "uploadthing/client";
 import type { ErrorMessage, FileRouter } from "uploadthing/server";
 
-import type { UploadthingComponentProps } from "../types";
 import { INTERNAL_uploadthingHookGen } from "../useUploadThing";
 import { getFilesFromClipboardEvent, progressWidths, Spinner } from "./shared";
 

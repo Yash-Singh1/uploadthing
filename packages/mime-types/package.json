@@ -15,6 +15,12 @@
       "require": "./dist/db.js"
     }
   },
+  "main": "./dist/index.mjs",
+  "react-native": {
+    "./package.json": "./package.json",
+    ".": "./dist/index.mjs",
+    "./db": "./dist/db.mjs"
+  },
   "typesVersions": {
     "*": {
       "*": [

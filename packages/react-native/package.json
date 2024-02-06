@@ -1,26 +1,17 @@
 {
-  "name": "@uploadthing/react",
+  "name": "@uploadthing/react-native",
   "version": "6.2.2",
   "license": "MIT",
   "exports": {
     "./package.json": "./package.json",
-    "./styles.css": "./dist/index.css",
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./hooks": {
-      "types": "./dist/hooks.d.ts",
-      "import": "./dist/hooks.mjs",
-      "require": "./dist/hooks.js"
-    },
-    "./next-ssr-plugin": {
-      "types": "./dist/next-ssr-plugin.d.ts",
-      "import": "./dist/next-ssr-plugin.mjs",
-      "require": "./dist/next-ssr-plugin.js"
+      "require": "./dist/index.js",
+      "react-native": "./dist/index.mjs"
     }
   },
+  "react-native": "./dist/index.mjs",
   "files": [
     "dist"
   ],
@@ -44,33 +35,39 @@
     "dev": "wait-on ../uploadthing/dist/server.mjs && tsup --watch"
   },
   "dependencies": {
-    "@uploadthing/dropzone": "^0.1.1",
-    "@uploadthing/react-shared": "^6.2.2",
+    "@uploadthing/react-shared": "file:~/uploadthing-redo/uploadthing/packages/react-shared",
     "@uploadthing/shared": "^6.2.0",
     "attr-accept": "^2.2.2",
     "file-selector": "^0.6.0",
+    "react-native-svg": "^14.1.0",
     "tailwind-merge": "^1.14.0"
   },
   "peerDependencies": {
-    "next": "*",
+    "expo-document-picker": "^11.10.1",
+    "expo-file-system": "^16.0.5",
+    "expo-image-picker": "^14.7.1",
     "react": "^17.0.2 || ^18.0.0",
+    "react-native": "*",
     "uploadthing": "^6.0.0"
   },
   "peerDependenciesMeta": {
-    "next": {
+    "expo-document-picker": {
+      "optional": true
+    },
+    "expo-image-picker": {
       "optional": true
     }
   },
   "devDependencies": {
     "@types/node": "^20.11.10",
     "@types/react": "18.2.33",
-    "@types/react-dom": "18.2.14",
     "@uploadthing/eslint-config": "0.2.0",
     "@uploadthing/tsconfig": "0.1.0",
     "@uploadthing/tsup-config": "0.1.0",
-    "autoprefixer": "10.4.14",
     "eslint": "^8.56.0",
-    "next": "14.0.1",
+    "expo-document-picker": "^11.10.1",
+    "expo-file-system": "^16.0.5",
+    "expo-image-picker": "^14.7.1",
     "postcss": "8.4.31",
     "react": "18.2.0",
     "tailwindcss": "^3.4.1",

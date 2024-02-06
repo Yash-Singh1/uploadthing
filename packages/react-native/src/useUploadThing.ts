@@ -5,8 +5,8 @@ import {
 
 export const INTERNAL_uploadthingHookGen: ReturnType<
   typeof INTERNAL_uploadthingHookGenBuilder
-> = INTERNAL_uploadthingHookGenBuilder("@uploadthing/react");
+> = INTERNAL_uploadthingHookGenBuilder("@uploadthing/react-native");
 
 export const generateReactHelpers: ReturnType<
   typeof generateReactHelpersBuilder
-> = generateReactHelpersBuilder("@uploadthing/react");
+> = generateReactHelpersBuilder("@uploadthing/react-native");

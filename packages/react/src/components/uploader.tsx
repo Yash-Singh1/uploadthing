@@ -1,6 +1,6 @@
+import type { UploadthingComponentProps } from "@uploadthing/react-shared/types";
 import type { ErrorMessage, FileRouter } from "uploadthing/server";
 
-import type { UploadthingComponentProps } from "../types";
 import { UploadButton } from "./button";
 import { UploadDropzone } from "./dropzone";
 

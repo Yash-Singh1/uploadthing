@@ -10,12 +10,14 @@
     "./client": {
       "types": "./dist/client.d.ts",
       "import": "./dist/client.mjs",
-      "require": "./dist/client.js"
+      "require": "./dist/client.js",
+      "react-native": "./dist/client.mjs"
     },
     "./server": {
       "types": "./dist/server.d.ts",
       "import": "./dist/server.mjs",
-      "require": "./dist/server.js"
+      "require": "./dist/server.js",
+      "react-native": "./dist/server.mjs"
     },
     "./next": {
       "types": "./dist/next.d.ts",
@@ -47,6 +49,11 @@
       "import": "./dist/h3.mjs",
       "require": "./dist/h3.js"
     }
+  },
+  "react-native": {
+    "./package.json": "./package.json",
+    "./client": "./dist/client.mjs",
+    "./server": "./dist/server.mjs"
   },
   "files": [
     "dist"
@@ -92,8 +99,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@uploadthing/mime-types": "^0.2.2",
-    "@uploadthing/shared": "^6.2.0",
+    "@uploadthing/mime-types": "file:~/uploadthing-redo/uploadthing/packages/mime-types",
+    "@uploadthing/shared": "file:~/uploadthing-redo/uploadthing/packages/shared",
     "consola": "^3.2.3",
     "std-env": "^3.7.0"
   },

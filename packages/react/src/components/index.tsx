@@ -1,9 +1,9 @@
 import type { ComponentProps, JSXElementConstructor } from "react";
 
+import type { GenerateTypedHelpersOptions } from "@uploadthing/react-shared/types";
 import { resolveMaybeUrlArg } from "uploadthing/client";
 import type { FileRouter } from "uploadthing/server";
 
-import type { GenerateTypedHelpersOptions } from "../types";
 import { UploadButton } from "./button";
 import { UploadDropzone } from "./dropzone";
 import { Uploader } from "./uploader";

@@ -10,6 +10,7 @@
       "require": "./dist/index.js"
     }
   },
+  "react-native": "./dist/index.mjs",
   "files": [
     "dist"
   ],
@@ -32,7 +33,7 @@
   },
   "devDependencies": {
     "@uploadthing/eslint-config": "0.2.0",
-    "@uploadthing/mime-types": "0.2.2",
+    "@uploadthing/mime-types": "file:~/uploadthing-redo/uploadthing/packages/mime-types",
     "@uploadthing/tsconfig": "0.1.0",
     "@uploadthing/tsup-config": "0.1.0",
     "eslint": "^8.56.0",

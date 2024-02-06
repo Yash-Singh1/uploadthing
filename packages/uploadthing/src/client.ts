@@ -24,7 +24,7 @@ import { createAPIRequestUrl, createUTReporter } from "./internal/ut-reporter";
  */
 export * from "./internal/component-theming";
 
-type UploadFilesOptions<
+export type UploadFilesOptions<
   TRouter extends FileRouter,
   TEndpoint extends keyof TRouter,
 > = {
@@ -76,22 +76,14 @@ export type UploadFileResponse<TServerOutput> = {
   serverData: TServerOutput;
 };
 
-export const DANGEROUS__uploadFiles = async <
+export const INTERNAL_getS3Presigned = async <
   TRouter extends FileRouter,
   TEndpoint extends keyof TRouter,
 >(
   endpoint: TEndpoint,
   opts: UploadFilesOptions<TRouter, TEndpoint>,
 ) => {
-  // Fine to use global fetch in browser
   const fetch = globalThis.fetch.bind(globalThis);
-
-  const reportEventToUT = createUTReporter({
-    endpoint: String(endpoint),
-    url: opts.url,
-    package: opts.package,
-    fetch,
-  });
 
   // Get presigned URL for S3 upload
   const s3ConnectionRes = await fetch(
@@ -137,6 +129,31 @@ export const DANGEROUS__uploadFiles = async <
       cause: s3ConnectionRes,
     });
   }
+
+  return s3ConnectionRes;
+};
+
+export const DANGEROUS__uploadFiles = async <
+  TRouter extends FileRouter,
+  TEndpoint extends keyof TRouter,
+>(
+  endpoint: TEndpoint,
+  opts: UploadFilesOptions<TRouter, TEndpoint>,
+) => {
+  // Fine to use global fetch in browser
+  const fetch = globalThis.fetch.bind(globalThis);
+
+  const reportEventToUT = createUTReporter({
+    endpoint: String(endpoint),
+    url: opts.url,
+    package: opts.package,
+    fetch,
+  });
+
+  const s3ConnectionRes = await INTERNAL_getS3Presigned<TRouter, TEndpoint>(
+    endpoint,
+    opts,
+  );
 
   const fileUploadPromises = s3ConnectionRes.map(async (presigned) => {
     const file = opts.files.find((f) => f.name === presigned.fileName);
@@ -229,7 +246,6 @@ export const DANGEROUS__uploadFiles = async <
         headers: { authorization: pollingJwt },
       }).then((r) => r.json() as Promise<PollingResponse>);
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return res.status === "done" ? res.callbackData : undefined;
     })) as inferEndpointOutput<TRouter[TEndpoint]>;
 

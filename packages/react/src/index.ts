@@ -12,7 +12,7 @@ export {
 
 export { generateReactHelpers } from "./useUploadThing";
 
-export type * from "./types";
+export type * from "@uploadthing/react-shared/types";
 
 export { useDropzone } from "@uploadthing/dropzone/react";
 export type * from "@uploadthing/dropzone/react";
