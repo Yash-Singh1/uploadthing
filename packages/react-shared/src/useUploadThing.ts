@@ -150,6 +150,8 @@ export const generateReactHelpersBuilder =
           ...opts,
           url,
           package: pkgName,
-        }),
+        } as unknown as Parameters<
+          typeof DANGEROUS__uploadFiles<TRouter, TEndpoint>
+        >[1]),
     } as const;
   };

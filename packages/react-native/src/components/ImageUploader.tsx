@@ -204,12 +204,14 @@ export function ImageUploader<
 
   const getUploadButtonContents = (fileTypes: string[]) => {
     if (state !== "uploading") {
-      return <Text>{getUploadButtonText(fileTypes)}</Text>;
+      return (
+        <Text style={{ color: "#fff" }}>{getUploadButtonText(fileTypes)}</Text>
+      );
     }
     if (uploadProgress === 100) {
       return <Spinner style={$props.theme?.spinnerStyle ?? {}} />;
     }
-    return <Text>{`${uploadProgress}%`}</Text>;
+    return <Text style={{ color: "#fff" }}>{`${uploadProgress}%`}</Text>;
   };
 
   const renderClearButton = () => {
@@ -239,6 +241,8 @@ export function ImageUploader<
           fontSize: 12,
           lineHeight: 20,
           color: "rgb(82, 82, 91)",
+          textAlign: "center",
+          marginTop: 4,
         }}
       >
         {allowedContentTextLabelGenerator(permittedFileInfo?.config)}
